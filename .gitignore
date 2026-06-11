@@ -8,3 +8,7 @@ __pycache__/*
 *.pyz
 *.pywz
 *.pyzw
+
+venv/
+.claude/
+assignments/assignment1/data/
