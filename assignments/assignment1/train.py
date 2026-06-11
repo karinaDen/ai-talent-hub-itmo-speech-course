@@ -1,14 +1,3 @@
-"""
-Assignment 1, Part 2: Binary Speech Classification (YES / NO)
-  - LogMelFilterBanks verification
-  - CNN with Conv1d, ~100K params
-  - Experiments: n_mels in [20, 40, 80] and groups in [1, 2, 4, 8, 16]
-  - Plots saved to ./plots/
-
-Usage:
-    python train.py [--epochs N] [--batch-size N] [--data-root PATH]
-"""
-
 import os
 import sys
 import time
@@ -22,8 +11,6 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-# ── soundfile fallback (torchaudio 2.9+ dropped all backends except torchcodec,
-#    which requires FFmpeg DLLs not present on this system) ──────────────────────
 import soundfile as sf
 
 def _sf_load(path, frame_offset=0, num_frames=-1, normalize=True,
@@ -39,9 +26,7 @@ def _sf_load(path, frame_offset=0, num_frames=-1, normalize=True,
     return t, sr
 
 torchaudio.load = _sf_load
-# ─────────────────────────────────────────────────────────────────────────────
 
-# Add assignment dir to path so we can import melbanks
 sys.path.insert(0, os.path.dirname(__file__))
 from melbanks import LogMelFilterBanks
 
@@ -62,7 +47,7 @@ def get_loaders(data_root: str, batch_size: int, num_workers: int = 2):
     loaders = {}
     for split in ('training', 'validation', 'testing'):
         ds = SPEECHCOMMANDS(data_root, download=True, subset=split)
-        # get_metadata() reads file paths only — no audio loaded during filtering
+        # get_metadata() 
         indices = [i for i in range(len(ds)) if ds.get_metadata(i)[2] in CLASSES]
         subset = Subset(ds, indices)
         loaders[split] = DataLoader(
@@ -94,14 +79,6 @@ def _collate(batch):
 # Model
 # ─────────────────────────────────────────────
 class SpeechCNN(nn.Module):
-    """1-D CNN for binary YES/NO classification using LogMelFilterBanks.
-
-    Architecture (groups=1, n_mels=80):
-        LogMelFilterBanks  ->  3x[Conv1d + BN + ReLU]  ->  AdaptiveAvgPool  ->  Linear
-
-    Parameter count stays well under 100K for all supported configs.
-    The `groups` parameter is applied to every Conv1d, reducing both params and FLOPs.
-    """
 
     def __init__(self, n_mels: int = 80, groups: int = 1):
         super().__init__()
@@ -343,7 +320,6 @@ def main():
 
     # ── 0. Verify LogMelFilterBanks ──────────────────────────────────────
     print("\n[0] Verifying LogMelFilterBanks ...")
-    # Use any short wav; download SPEECHCOMMANDS first so we have a sample
     sample_wav = None
     for root, _dirs, files in os.walk(args.data_root):
         for f in files:
@@ -360,7 +336,6 @@ def main():
     )
 
     if sample_wav is None:
-        # pick from the downloaded dataset
         for root, _dirs, files in os.walk(args.data_root):
             for f in files:
                 if f.endswith('.wav'):

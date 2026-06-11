@@ -10,5 +10,6 @@ __pycache__/*
 *.pyzw
 
 venv/
+venv2/
 .claude/
 assignments/assignment1/data/

@@ -41,7 +41,6 @@ class LogMelFilterBanks(nn.Module):
         self.power = power
 
         # Mel filterbank params
-        # Match torchaudio.transforms.MelSpectrogram default: f_max=None -> sample_rate // 2
         self.f_min_hz = f_min_hz
         self.f_max_hz = f_max_hz if f_max_hz is not None else float(samplerate // 2)
         self.norm_mel = norm_mel
@@ -51,7 +50,6 @@ class LogMelFilterBanks(nn.Module):
         self.mel_fbanks = self._init_melscale_fbanks()
 
     def _init_melscale_fbanks(self):
-        # To access attributes, use self.<parameter_name>
         return F.melscale_fbanks(
             n_freqs=self.n_fft // 2 + 1,
             f_min=self.f_min_hz,
@@ -63,8 +61,6 @@ class LogMelFilterBanks(nn.Module):
         )
 
     def spectrogram(self, x):
-        # x - is an input signal
-        # torch.stft natively handles center padding and pad_mode
         return torch.stft(
             x,
             n_fft=self.n_fft,
@@ -89,11 +85,9 @@ class LogMelFilterBanks(nn.Module):
         # (batch, n_freqs, n_frames) complex
         spec = self.spectrogram(x)
 
-        # Power spectrum: |STFT|^power -> (batch, n_freqs, n_frames)
         power_spec = spec.abs().pow(self.power)
 
-        # mel_fbanks: (n_freqs, n_mels)
-        # Transpose power_spec to (batch, n_frames, n_freqs), matmul, transpose back
+        
         mel_spec = torch.matmul(
             power_spec.transpose(-1, -2),          # (batch, n_frames, n_freqs)
             self.mel_fbanks.to(x.device),          # (n_freqs, n_mels)

@@ -1,0 +1,9 @@
+Dataset,Method,WER,CER
+LibriSpeech,Greedy,0.0323,0.0268
+LibriSpeech,Beam search,0.0323,0.0268
+LibriSpeech,Beam+3gram (SF a=0.01 b=0.0),0.0323,0.0268
+LibriSpeech,Beam+3gram (RS a=0.01 b=0.0),0.0323,0.0268
+Earnings22,Greedy,0.4237,0.2399
+Earnings22,Beam search,0.4068,0.2399
+Earnings22,Beam+3gram (SF a=0.01 b=0.0),0.4237,0.2399
+Earnings22,Beam+3gram (RS a=0.01 b=0.0),0.4068,0.2399
