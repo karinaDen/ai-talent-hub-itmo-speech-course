@@ -13,3 +13,6 @@ venv/
 venv2/
 .claude/
 assignments/assignment1/data/
+
+# LM files — decompressed .arpa is too large for git (94 MB); keep .arpa.gz only
+assignments/assignment2/lm/*.arpa
