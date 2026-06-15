@@ -1,0 +1,6 @@
+torch>=2.0.0
+torchaudio>=2.0.0
+soundfile
+numpy
+matplotlib
+TTS==0.22.0
