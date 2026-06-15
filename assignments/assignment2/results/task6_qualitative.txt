@@ -1,0 +1,60 @@
+--- Example 1 ---
+REF : then as archy stood in the dark literally aghast with astonishment he heard the faint rustling once more and again all was silent
+BEAM: then as archi stood in the dark literally aghased with astonishment he heard the faint rustling once more and again all was silent
+SF  : then as archi stood in the dark literally agased with astonishment he heard the faint rustling once more and again all was silent  (changed)
+RS  : then as archi stood in the dark literally aghased with astonishment he heard the faint rustling once more and again all was silent  (=beam)
+
+--- Example 2 ---
+REF : he laughed but it was a curious kind of laugh full of vexation injured amour propre as the french call our love of our own dignity of which archibald raystoke in the full flush of his young belief in his importance as a british officer had a pretty good stock
+BEAM: he laughed but it was a curious kind of laugh full of vexation injured amou propra as the prench callar alove of our own dignity of which archabald ray stroke in the full flush of his young belief in his importance as a british officer had a petty good stock
+SF  : he laughed but it was a curious kind of laugh full of vexation injured amo propra as the prench callar alove of our own dignity of which archabald ray stroke in the full flush of his young belief in his importance as a british officer had a petty good stock  (changed)
+RS  : he laughed but it was a curious kind of laugh full of vexation injured amou propra as the prench callar alove of our own dignity of which archabald ray stroke in the full flush of his young belief in his importance as a british officer had a petty good stock  (=beam)
+
+--- Example 3 ---
+REF : the kick he had received was a foretaste of what he might expect and after a little consideration he came to the conclusion that his duty was to escape and get back to the cutter as quickly as he could
+BEAM: the kickhe had received was a foretaste of what he might expect and after a little consideration he came to the conclusion that his duty was to escape and get back to the cutter as quickly as he could
+SF  : the kickhe had received was a foretaste of what he might expect and after a little consideration he came to the conclusion that his duty was to escape and get back to the cutter as quickly as he could  (=beam)
+RS  : the kick he had received was a fore taste of what he might expect and after a little consideration he came to the conclusion that his duty was to escape and get back to the cutter as quickly as he could  (changed)
+
+--- Example 4 ---
+REF : a fellow who was shut up in prison for life might do it he said but not in a case like this
+BEAM: a fellow who as shut up in prison for life might doit he said but not in a case like this
+SF  : a fellow who as shut up in prison for life might do it he said but not in a case like this  (changed)
+RS  : a fellow who as shut up in prison for life might do it he said but not in a case like this  (changed)
+
+--- Example 5 ---
+REF : stop here till sir risdon comes down and tell him i'm very sorry that we should have cleared out last night only a born fool saw jerry nandy's lobster boat coming into the cove and came running to say it was a party from the cutter yes father
+BEAM: stop here till sir rysdon comes down and tell him i'm very sorry that we shoul have cleared out last night only a born fool saw jerry nandy's lobsterboat coming into the cove and came running to say it was a party from the cutter yes father
+SF  : stop here till sir rysdon comes down and tell him i'm very sorry that we shoul have cleared out last night only a born fool saw jerry nandy's lobsterboat coming into the cove and came running to say it was a party from the cutter yes father  (=beam)
+RS  : stop here till sir rysdon comes down and tell him i'm very sorry that we shoul have cleared out last night only a born fool saw jerry nandy's lobster boat coming into the cove and came running to say it was a party from the cutter yes father  (changed)
+
+--- Example 6 ---
+REF : the dull sound of departing steps and a low whistling sound coming down through the skylight window into the cabin where archy raystoke lay with his heavy eyelids pressed down by sleep
+BEAM: the dull sound of departing steps and a low whistling sound coming down through the skylight window into the cabin where archy raystroke lay with his heavy eyelids pressed down by sleep
+SF  : the dull sound of departing steps and a low whistling sound coming down through the skylight window into the cabin where archy raystroke lay with his heavy iyelids pressed down by sleep  (changed)
+RS  : the dull sound of departing steps and a low whistling sound coming down through the skylight window into the cabin where archy raystroke lay with his heavy eyelids pressed down by sleep  (=beam)
+
+--- Example 7 ---
+REF : but how queer for mister gurr to be talking like that to andrew teal the boy who helped the cook
+BEAM: but how queer for mister gurver to be talking like that to andreuteal the boy who helped the cook
+SF  : but how queer for mister gurver to be talking like that to andreutel the boy who helped the cook  (changed)
+RS  : but how queer for mister gurver to be talking like that to andreuteal the boy who helped the cook  (=beam)
+
+--- Example 8 ---
+REF : and why did andy call mister gurr father
+BEAM: and why did andy call mister gurfather
+SF  : and why did andy call mister gur father  (changed)
+RS  : and why did andy call mister gur father  (changed)
+
+--- Example 9 ---
+REF : there was an interval of thinking over this knotty question during which the low whistling went on
+BEAM: there was an interval of thinking over this nadty question during which the low whistling went on
+SF  : there was an interval of thinking over this naty question during which the low whistling went on  (changed)
+RS  : there was an interval of thinking over this nadty question during which the low whistling went on  (=beam)
+
+--- Example 10 ---
+REF : what did they say false alarm tell sir risdon they would clear all away to night see if anything had been left about lobster boat
+BEAM: what did they say false alarm tell servance and they would clear all away to night see if anything had been left about lobster wrote
+SF  : what did they say false alarm tell servacs and they would clear all away to night see if anything had been left about lobster wrote  (changed)
+RS  : what did they say false alarm tell servance and they would clear all away to night see if anything had been left about lobster wrote  (=beam)
+

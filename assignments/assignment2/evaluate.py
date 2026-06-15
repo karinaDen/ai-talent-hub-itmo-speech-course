@@ -1,14 +1,3 @@
-"""
-Assignment 2 — Evaluation script
-Runs Tasks 1–7b and saves plots + results to ./results/
-
-Usage:
-    python evaluate.py [--data-root .] [--lm lm/3-gram.pruned.1e-7.arpa]
-                       [--beam-width 10] [--max-samples 200]
-
-Set --max-samples to a small number (e.g. 10) for a quick smoke test.
-"""
-
 import argparse
 import csv
 import os
@@ -27,12 +16,9 @@ from wav2vec2decoder import Wav2Vec2Decoder
 
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), 'results')
 
-# ─────────────────────────────────────────────
-# Acoustic model — loaded ONCE for the whole script
-# ─────────────────────────────────────────────
-_decoder: Wav2Vec2Decoder = None   # populated in main()
 
-# LM cache: path -> kenlm.Model  (each .arpa loaded only once)
+_decoder: Wav2Vec2Decoder = None 
+
 _lm_cache: dict = {None: None}
 
 def _get_lm(path):
@@ -52,9 +38,6 @@ def _cfg(lm_path=None, beam_width=10, alpha=1.0, beta=1.0, temperature=1.0):
     return _decoder
 
 
-# ─────────────────────────────────────────────
-# Data loading
-# ─────────────────────────────────────────────
 
 def load_manifest(manifest_path: str, base_dir: str, max_samples: int):
     samples = []
@@ -73,10 +56,6 @@ def load_audio(path: str) -> torch.Tensor:
     return waveform
 
 
-# ─────────────────────────────────────────────
-# Evaluation
-# ─────────────────────────────────────────────
-
 def evaluate_dataset(decoder: Wav2Vec2Decoder, samples, method: str):
     hyps, refs = [], []
     t0 = time.time()
@@ -91,9 +70,6 @@ def evaluate_dataset(decoder: Wav2Vec2Decoder, samples, method: str):
     return jiwer.wer(refs, hyps), jiwer.cer(refs, hyps), elapsed, hyps
 
 
-# ─────────────────────────────────────────────
-# Plotting
-# ─────────────────────────────────────────────
 
 def save_line(x, ys_dict, xlabel, ylabel, title, filename):
     plt.figure(figsize=(8, 4))
@@ -132,10 +108,6 @@ def save_heatmap(df, title, filename):
     print(f"  Saved: {path}")
 
 
-# ─────────────────────────────────────────────
-# Main
-# ─────────────────────────────────────────────
-
 def main():
     global _decoder
 
@@ -151,15 +123,12 @@ def main():
 
     os.makedirs(RESULTS_DIR, exist_ok=True)
 
-    # ── Load acoustic model ONCE ─────────────────────────────────────────────
     print("Loading acoustic model (once for the entire script)...")
     _decoder = Wav2Vec2Decoder(lm_model_path=None)
     print("Model ready.\n")
 
-    # ── Pre-load the 3-gram LM ───────────────────────────────────────────────
     _get_lm(args.lm)
 
-    # ── Load manifests ───────────────────────────────────────────────────────
     ls_samples = load_manifest(
         os.path.join(args.data_root, 'data/librispeech_test_other/manifest.csv'),
         args.data_root, args.max_samples
@@ -256,11 +225,6 @@ def main():
         print(f"  4-gram best: WER={lm4_best_wer:.4f}  CER={lm4_best_cer:.4f}  (a={best_alpha}, b={best_t5_beta})\n")
     else:
         print("[Task 5] Skipped — pass --lm4 /path/to/4-gram.arpa to enable\n")
-        print("  Download: https://openslr.org/resources/11/4-gram.arpa.gz\n")
-        print("  Decompress (Windows): python -c \""
-              "import gzip,shutil; "
-              "shutil.copyfileobj(gzip.open('4-gram.arpa.gz','rb'), open('lm/4-gram.arpa','wb'))"
-              "\"\n")
 
     # ── Task 6: LM rescoring — alpha/beta grid, LibriSpeech ──────────────────
     print("[Task 6] LM rescoring — alpha/beta sweep, LibriSpeech")

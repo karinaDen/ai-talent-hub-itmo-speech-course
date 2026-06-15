@@ -1,0 +1,5 @@
+LM,Method,LS WER,LS CER,E22 WER,E22 CER
+LibriSpeech 3-gram,beam_lm,0.1122,0.0381,0.5539,0.2552
+LibriSpeech 3-gram,beam_lm_rescore,0.1100,0.0375,0.5500,0.2541
+Financial 3-gram,beam_lm,0.1127,0.0385,0.5274,0.2532
+Financial 3-gram,beam_lm_rescore,0.1107,0.0378,0.5389,0.2522

@@ -1,9 +1,9 @@
 Dataset,Method,WER,CER
-LibriSpeech,Greedy,0.0881,0.0284
-Earnings22,Greedy,0.5712,0.2799
-LibriSpeech,Beam search,0.0833,0.0272
-Earnings22,Beam search,0.5673,0.2776
-LibriSpeech,"Beam+LM shallow (a=0.01,b=1.0)",0.0801,0.0272
-Earnings22,"Beam+LM shallow (a=0.01,b=1.0)",0.5857,0.2776
-LibriSpeech,"Beam+LM rescore (a=0.01,b=1.5)",0.0777,0.0266
-Earnings22,"Beam+LM rescore (a=0.01,b=1.5)",0.5692,0.2767
+LibriSpeech,Greedy,0.1122,0.0381
+Earnings22,Greedy,0.5497,0.2558
+LibriSpeech,Beam search,0.1107,0.0377
+Earnings22,Beam search,0.5494,0.2538
+LibriSpeech,"Beam+LM shallow (a=0.5,b=1.5)",0.1105,0.0378
+Earnings22,"Beam+LM shallow (a=0.5,b=1.5)",0.5627,0.2556
+LibriSpeech,"Beam+LM rescore (a=0.01,b=1.5)",0.1100,0.0374
+Earnings22,"Beam+LM rescore (a=0.01,b=1.5)",0.5533,0.2538
