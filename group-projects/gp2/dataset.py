@@ -85,14 +85,14 @@ class LJSpeechVocoderDataset(Dataset):
     """
 
     def __init__(self, data_root: str, segment_frames: int = SEGMENT_FRAMES,
-                 download: bool = True):
+                 download: bool = True, wav_dir: str = None):
         self.segment_frames  = segment_frames
         self.segment_samples = segment_frames * HOP_LENGTH
 
-        # Trigger LJSpeech download / extraction
-        torchaudio.datasets.LJSPEECH(data_root, download=download)
-
-        wav_dir  = os.path.join(data_root, 'LJSpeech-1.1', 'wavs')
+        if wav_dir is None:
+            wav_dir = os.path.join(data_root, 'LJSpeech-1.1', 'wavs')
+            if not os.path.isdir(wav_dir):
+                torchaudio.datasets.LJSPEECH(data_root, download=download)
         min_samp = self.segment_samples + WIN_LENGTH   # safety margin
 
         self.wav_paths = sorted([

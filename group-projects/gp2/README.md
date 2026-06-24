@@ -72,6 +72,35 @@ BaseAudioConfig(fft_size=1024,
 * Google Classroom PDF report describing your work, experiments and results in free form
 
 
+### Google Colab Setup
+
+Google Colab uses Python 3.12. The official `TTS==0.22.0` package on PyPI fails to build on Python 3.12 because it uses `distutils` (removed in Python 3.12). Use the community fork [idiap/coqui-ai-TTS](https://github.com/idiap/coqui-ai-TTS) instead — it has the same API and supports Python 3.12+:
+
+```python
+# 1. Install TTS fork with Python 3.12 support (same API as original)
+!pip install git+https://github.com/idiap/coqui-ai-TTS.git -q
+
+# 2. Install remaining dependencies
+!pip install torchaudio soundfile matplotlib -q
+```
+
+Then clone the repo and run training:
+```python
+# Mount Drive (optional, for saving checkpoints)
+from google.colab import drive
+drive.mount('/content/drive')
+
+# Download LJSpeech
+import torchaudio
+torchaudio.datasets.LJSPEECH('/content/data', download=True)
+
+# Train
+!python group-projects/gp2/train.py \
+    --data-root /content/data/LJSpeech-1.1 \
+    --out-dir /content/drive/MyDrive/gp2_checkpoints \
+    --epochs 300 --batch-size 16 --device cuda
+```
+
 ### Resources
 
 - [Coqui-TTS](https://github.com/coqui-ai/TTS): examples of architectures, training objectives and pipelines

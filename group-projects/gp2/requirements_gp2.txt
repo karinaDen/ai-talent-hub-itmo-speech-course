@@ -3,4 +3,9 @@ torchaudio>=2.0.0
 soundfile
 numpy
 matplotlib
+# TTS requires Python < 3.12 and fails to build on Python 3.12 (distutils removed).
+# In Google Colab (Python 3.12) install the community fork instead:
+#   pip install git+https://github.com/idiap/coqui-ai-TTS.git
+# On Python < 3.12 (local):
+#   pip install TTS==0.22.0
 TTS==0.22.0

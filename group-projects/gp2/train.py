@@ -101,7 +101,7 @@ def train(args):
 
     # ── Data ─────────────────────────────────────────────────────────────────
     full_ds = LJSpeechVocoderDataset(args.data_root, segment_frames=SEGMENT_FRAMES,
-                                     download=True)
+                                     download=True, wav_dir=args.wav_dir)
     n_val   = min(500, len(full_ds) // 10)
     n_train = len(full_ds) - n_val
     train_ds, val_ds = random_split(
@@ -214,6 +214,9 @@ def main():
     )
     parser.add_argument('--data-root',    default='/content',
                         help='Root directory for LJSpeech download')
+    parser.add_argument('--wav-dir',      default=None,
+                        help='Direct path to LJSpeech wavs/ folder '
+                             '(skips download, use for Kaggle read-only input)')
     parser.add_argument('--out-dir',      default='checkpoints')
     parser.add_argument('--resume',       default=None,
                         help='Path to checkpoint to resume from')
